@@ -1,0 +1,70 @@
+Reference:
+https://admhelp.microfocus.com/uft/en/all/VBScript/Content/html/c5218612-eb23-4729-817c-65ffd0d41b61.htm
+
+Constant
+Const conVariableName = value
+
+Array
+Variant() as array
+
+| Prefix | Example       |
+|--------|---------------|
+| con    | conMyConstant |
+| var    | varMyArray    |
+
+| Subtype     | Prefix | Example       | 
+| ----------- | ------ | ------------- | 
+| Boolean     | bln    | blnFound      | 
+| Byte        | byt    | bytRasterData | 
+| Date (Time) | dtm    | dtmStart      | 
+| Double      | dbl    | dblTolerance  | 
+| Error       | err    | errOrderNum   | 
+| Integer     | int    | intQuantity   | 
+| Long        | lng    | lngDistance   | 
+| Object      | obj    | objCurrent    | 
+| Single      | sng    | sngAverage    | 
+| String      | str    | strFirstName  | 
+
+| Scope           | Prefix | Example            | 
+| --------------- | ------ | ------------------ | 
+| Procedure-level | None   | dblVelocity        | 
+| Script-level    | s      | sblnCalcInProgress | 
+
+Descriptive Variable and Procedure Names
+Procedure names should begin with a verb, such as InitNameArray or CloseDialog.
+When using abbreviations, make sure they are consistent throughout the entire script.
+Randomly switching between Cnt and Count within a script or set of scripts may lead to confusion.
+
+| Section Heading | Comment Contents                                                 | 
+| --------------- | ---------------------------------------------------------------- | 
+| Purpose         | What the procedure does (not how).                               | 
+| Assumptions     | List of any external variable, control, or other element         | 
+|                 | whose state affects this procedure.                              | 
+| Effects         | List of the procedure's effect on each                           | 
+|                 | external variable, control, or other element.                    | 
+| Inputs          | Explanation of each argument that is not obvious.                | 
+|                 | Each argument should be on a separate line with inline comments. | 
+| Return Values   | Explanation of the value returned.                               | 
+
+'*********************************************************
+' Purpose: Locates the first occurrence of a specified user 
+'          in the UserList array.
+' Inputs: strUserList(): the list of users to be searched.
+'         strTargetUser: the name of the user to search for.
+' Returns: The index of the first occurrence of the strTargetUser 
+'          in the strUserList array. 
+'          If the target user is not found, return -1.
+'*********************************************************
+Function intFindUser (strUserList(), strTargetUser)
+    Dim i   ' Loop counter.
+    Dim blnFound   ' Target found flag
+    intFindUser = -1
+    i = 0   ' Initialize loop counter
+    Do While i <= Ubound(strUserList) and Not blnFound
+      If strUserList(i) = strTargetUser Then 
+         blnFound = True   ' Set flag to True
+         intFindUser = i   ' Set return value to loop count
+      End If
+      i = i + 1   ' Increment loop counter
+    Loop
+End Function
