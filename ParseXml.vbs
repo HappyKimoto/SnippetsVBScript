@@ -36,5 +36,13 @@ Sub Test1()
     For Each objNode In objNodes
         WScript.Echo objNode.Text, objNode.getAttribute("lang"), objNode.getAttribute("index")
     Next
+
+    ' Test escape characters
+    Set objNodes = objDOM.SelectSingleNode("Root/Escapes").childNodes
+    For Each objNode In objNodes
+        ' Get node name, attribute, text
+        WScript.Echo Join(Array(objNode.nodeName, objNode.getAttribute("name"), objNode.Text), "//")
+    Next
+
 End Sub
 Test1

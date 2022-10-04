@@ -11,4 +11,16 @@
         <Message lang="English" index="2">Good Morning</Message>
         <Message lang="Japanese" index="1">こんにちは</Message>
     </Body>
+    <!--
+    "   &quot;
+    '   &apos;
+    <   &lt;
+    >   &gt;
+    &   &amp;
+    -->
+    <Escapes>
+        <Catoon name="Tom &amp; Jerry"/>
+        <Math name="Less than">5 &lt; 10 is &apos;True&apos;</Math>
+        <Programming name="Ritual">&quot;Hello World&quot;</Programming>
+    </Escapes>
 </Root>
