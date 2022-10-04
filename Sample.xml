@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+    <!-- This is a comment -->
+    <Header>
+        <Date description="Start">2021/9/25</Date>
+        <Date description="End">2022/10/02</Date>
+        <Date/>
+    </Header>
+    <Body>
+        <Message lang="English" index="1">Hello World</Message>
+        <Message lang="English" index="2">Good Morning</Message>
+        <Message lang="Japanese" index="1">こんにちは</Message>
+    </Body>
+</Root>
