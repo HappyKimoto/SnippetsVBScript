@@ -125,6 +125,21 @@ Function strReadTextShiftJIS(ByVal strFp)
 	Set objStream = Nothing
 End Function
 
+' Purpose: Read text contents
+' Inputs: strFp - absolute file path to the input file
+'         strCharSet - let the user define the encoding
+' Returns: string of the file text read in the specified encoding
+Function strReadText(ByVal strFp, ByVal strCharSet)
+	Dim objStream: Set objStream = CreateObject("ADODB.Stream")
+	With objStream
+		.CharSet = strCharSet
+		.Open
+		.LoadFromFile(strFp)
+		strReadText = .ReadText()
+	End With
+	Set objStream = Nothing
+End Function
+
 ' Purpose: Write text contents to the output file
 ' Inputs: strFp - absolute file path to the output file
 '         strTxt - Text contents
@@ -140,3 +155,27 @@ Sub WriteTextShiftJIS(ByVal strFp, ByVal strTxt)
 	End With
 	Set objStream = Nothing
 End Sub
+
+' Purpose: Write text contents to the output file
+' Inputs: strFp - absolute file path to the output file
+'         strTxt - Text contents
+'         strCharSet - Encoding to write with
+' Assumptions: strTxt should agree with strCharSet
+' Effects: strTxt will be written to strFp
+Sub WriteText(ByVal strFp, ByVal strTxt, ByVal strCharSet)
+	Dim objStream: Set objStream = CreateObject("ADODB.Stream")
+	With objStream
+		.CharSet = strCharSet
+		.Open
+		.WriteText strTxt
+		.SaveToFile strFp
+	End With
+	Set objStream = Nothing
+End Sub
+
+Sub TestRead()
+	'Arguments: (0): File Path, (1): Encoding
+	WScript.Echo strReadText(WScript.Arguments(0), WScript.Arguments(1))
+End Sub
+TestRead
+
