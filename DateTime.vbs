@@ -164,5 +164,34 @@ Sub Test4()
     dtmReturn = dtmFromString(strDate, strTime)
     WScript.Echo dtmReturn, TypeName(dtmReturn) ' 10/4/2022 5:22:59 PM Date
 End Sub
-Test4
+' Test4
+
+' Copied from String.vbs
+Function strPadZero2(ByVal intNum)
+	strPadZero2 = Right("00" & CStr(intNum), 2)
+End Function
+
+Function strPadZero4(ByVal intNum)
+	strPadZero4 = Right("0000" & CStr(intNum), 4)
+End Function
+
+' Purpose: Create string of current date/time without symbols
+' Return: current date/time in the format of yyyyMMddhhmmss
+Function strNowNoSymbols()
+    Dim dtmNow, strReturn
+    dtmNow = Now()
+    strReturn = _
+    strPadZero4(Year(dtmNow)) & _
+    strPadZero2(Month(dtmNow)) & _
+    strPadZero2(Day(dtmNow)) & _
+    strPadZero2(Hour(dtmNow)) & _
+    strPadZero2(Minute(dtmNow)) & _
+    strPadZero2(Second(dtmNow))
+    strNowNoSymbols = strReturn
+End Function
+
+Sub Test5()
+    WScript.Echo strNowNoSymbols()
+End Sub
+Test5
 
