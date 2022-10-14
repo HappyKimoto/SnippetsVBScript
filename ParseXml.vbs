@@ -1,6 +1,6 @@
 Option Explicit
 
-Const conXmlFp = "Sample.xml"
+Const conXmlFp = "ParseXml.xml"
 
 Sub Test1()
     ' Create DOM object

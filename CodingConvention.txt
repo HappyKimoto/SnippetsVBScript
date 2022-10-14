@@ -30,6 +30,25 @@ Variant() as array
 | Procedure-level | None   | dblVelocity        | 
 | Script-level    | s      | sblnCalcInProgress | 
 
+Sometimes, prefix passed argument as with "arg" like "argColumnCount".
+  Pros: 
+  - Can differentiate passed argument from other parameters.
+  - Can help prevent name conflict in a situation like Class property
+  Cons: 
+  - Cannot tell the data type
+
+| Subtype     | Prefix | Example        | 
+| ----------- | ------ | -------------- | 
+| Unknown     | arg    | argColumnCount | 
+
++-----------------------------------------------------------+
+|     Private intColumnCount                                |
+|     Public Property Let ColumnCount(ByVal argColumnCount) |
+|         intColumnCount = argColumnCount                   |
+|     End Property                                          |
++-----------------------------------------------------------+
+
+
 Descriptive Variable and Procedure Names
 Procedure names should begin with a verb, such as InitNameArray or CloseDialog.
 When using abbreviations, make sure they are consistent throughout the entire script.
