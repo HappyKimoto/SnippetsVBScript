@@ -1,9 +1,11 @@
 @echo off
 :: output file name
 set "FileName=AlarmReport.txt"
-:: get info from the environment and overwrite the output file
+:: overwrite the output file with Computer Name
 echo Computer Name: %ComputerName% > %FileName%
+:: append extra system information
 echo Report Created: %DATE% %TIME% >> %FileName%
+reg query HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation >> %FileName%
 :: get info from the user
 SETLOCAL
 CALL :GetUserInput "Machine Name"
