@@ -214,22 +214,22 @@ End Sub
 
 ' Purpose: Test FPath.vbs
 ' Assumption: Run like >cscript FPath.vbs <RootFolder> .*txt
-Sub Test()
+Sub TestMapping()
 	Dim strRootDir, varFileAttr, strFilterRgxPattern
 	strRootDir = WScript.Arguments(0)
 	strFilterRgxPattern = WScript.Arguments(1)
-
+	' Loop through files and gather file attribute
 	MapFilesRecursively strRootDir, varFileAttr
-	
+	' Sort array
 	SortFileAttrArray varFileAttr, sconFilePropertyArrayDateLastModified
-
+	' Filter by regular expression
 	varFileAttr = varFileAttrArrayFilteredByPath(varFileAttr, strFilterRgxPattern)
-
+	' Print the result
 	Dim i: For i = LBound(varFileAttr) To UBound(varFileAttr)
 		WScript.Echo Join(varFileAttr(i), "~")
 	Next
 End Sub
-Test
+' TestMapping
 
 ' https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/filesystemobject-object
 '
@@ -274,3 +274,17 @@ Test
 '  |          | for folders, returns the size, in bytes, of all files and subfolders contained in the folder. | 
 '  | Type     | Returns information about the type of a file or folder                                        | 
 '  |          | (for example, for files ending in .TXT, "Text Document" is returned).                         | 
+
+Sub TestGetNames()
+	Dim strFp: strFp = WScript.Arguments(0)
+	Dim objFSO: Set objFSO = CreateObject("Scripting.FileSystemObject")
+	WScript.Echo "strFp=" & strFp
+	WScript.Echo "objFSO.GetExtensionName(strFp)=" & objFSO.GetExtensionName(strFp)
+	WScript.Echo "objFSO.GetBaseName(strFp)=" & objFSO.GetBaseName(strFp)
+	WScript.Echo "objFSO.GetDriveName(strFp)=" & objFSO.GetDriveName(strFp)
+	WScript.Echo "objFSO.GetFileName(strFp)=" & objFSO.GetFileName(strFp)
+	WScript.Echo "objFSO.GetParentFolderName(strFp)=" & objFSO.GetParentFolderName(strFp)
+	WScript.Echo "objFSO.GetAbsolutePathName(strFp)=" & objFSO.GetAbsolutePathName(strFp)
+	Set objFSO = Nothing
+End Sub
+TestGetNames
