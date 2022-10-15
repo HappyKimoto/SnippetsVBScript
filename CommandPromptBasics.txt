@@ -1,0 +1,16 @@
+Open command prompt:
+- from start menu: [Win] + "cmd" + [Enter]
+- from windows explorer: Type "cmd" in Address Bar and Press [Enter]
+- from notepad++: right Click -> [Open into] -> [Open Containing Folder in cmd]
+
+Edit Menu:  [Alt] + [Space] -> [E]
+Select All: [Alt] + [Space] -> [E] -> [S]
+Copy current selection: [Enter]
+Copy all text:  [Alt] + [Space] -> [E] -> [S] -> [Enter]    // remember this combo.
+
+Loop through files forward in the curend directory: [Tab]
+Loop through files backward in the curend directory: [Shift] + [Tab]
+
+Loop through previously input command: [down] in chronological order or [up] for reverse order
+Select specific input command: [F7] -> [up] or [down] -> [Enter]
+
