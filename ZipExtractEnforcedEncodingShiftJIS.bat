@@ -1,11 +1,20 @@
 @echo off
 
-rem How to use
-rem - Place this batch script at SendTo folder.
+rem Preparation
+rem - Place this batch script (or its shortcut) to the SendTo folder.
+rem - 7zip is installed at C:\Program Files
+rem - 7zip can be downloaded from https://www.7-zip.org/download.html
+rem
+rem How to use:
+rem - Right click a zip archive.
+rem - On file explorer, select this batch script from SendTo right-click
+rem - Drag and drop the output folder
+rem - Press enter
 
 title Shift-JIS Zip Extraction
 
 rem set code page of command prompt to 932 (Shift-JIS)
+rem if other encoding is desired, change this number.
 chcp 932
 
 rem print the passed file path for debugging purpose.
