@@ -47,14 +47,16 @@ Sub Main()
     "</head>", _
     "<body>", _
     "<h1></h1>"), vbCrlf) & vbCrlf & vbCrlf
-    Dim objFile, strFpImgOut
+    Dim objFile, strFpImgOut, strFpImgOutRelative
     For Each objFile In objFSO.GetFolder(strDirImg).Files
         If blnIsExtensionMatched(objFile.Path, varImageExtensionsLowCase) Then
             strFpImgOut = objFSO.BuildPath(strDirInclude, objFile.Name)
             objFSO.CopyFile objFile.Path, strFpImgOut, True
+            strFpImgOutRelative = Replace(strFpImgOut, strDirOut & "\", "")
+            strFpImgOutRelative = Replace(strFpImgOutRelative, "\", "/")
             strTxtHtml = strTxtHtml & Join(Array( _
             "<h2>" & objFSO.GetBaseName(objFile.Name) & "</h2>", _
-            "<img src=""" & strFpImgOut & """ alt=""" & objFile.Name & """>", _
+            "<img src=""" & strFpImgOutRelative & """ alt=""" & objFile.Name & """>", _
             "<table><tr>", _
             "<td class=""lang1"">", _
             "<td class=""lang2"">", _
