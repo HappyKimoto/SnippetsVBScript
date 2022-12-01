@@ -43,7 +43,7 @@ Sub Main()
     "<head>", _
     "<title></title>", _
     "<meta charset=""UTF-8"">", _
-    "<link rel=""stylesheet"" href=""./include/style.css"">", _
+    "<link rel=""stylesheet"" href=""./include/styles.css"">", _
     "</head>", _
     "<body>", _
     "<h1></h1>"), vbCrlf) & vbCrlf & vbCrlf
